@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<meta
+			name="description"
+			content="Rotary editor application"
+		/>
+		<link
+			rel="stylesheet"
+			href="main.css"
+		/>
+		<title>Rotary Editor</title>
+	</head>
+	<body>
+		<main>
+			<section id="intro">
+				<div>
+					<p>
+						<a href="https://laulau.land"
+							>&lt; Back to laulau.land</a
+						>
+					</p>
+				</div>
+				<h1>Rotary Editor</h1>
+				<p>
+					I've been wondering what an "Alt + drag" interaction would
+					look like in a traditional text editor.
+				</p>
+
+				<p>
+					"Alt + drag" is an interaction in canvas apps like Figma
+					that lets you quickly duplicate elements and explore
+					different versions of your design. If you've seen what a
+					designer's exploration board looks like, it's like a
+					waterfall that might start narrow on the left-hand side but
+					then broadens into a tree of versions on the right. The Alt
+					+ drag interaction lets designers try out microdecisions and
+					later walk their colleague through them with a "what if we
+					went this way" story.
+				</p>
+
+				<p>
+					Writing is similarly not linear - we double back, we try
+					different approaches, we keep multiple versions in our head.
+					Maybe our tools could better reflect this reality. An Alt +
+					drag interaction already exists in text where you can make a
+					quick copy of a phrase or paragraph to try out a different
+					version. Here's the tricky part though - while Alt + drag in
+					Figma keeps the whole composition right there for you to
+					see, having multiple copies of paragraphs in your text
+					totally breaks the flow. You really need to keep the rhythm
+					of the text intact so you can feel how it all works
+					together.
+				</p>
+
+				<p>
+					The rotary editor (I might need a better name, suggestions
+					welcome) is my interaction design experiment to see if we
+					can bring a similar kind of exploration to writing. It lets
+					you <em>rotate</em>, a.k.a try out, different versions of
+					your paragraphs while keeping the natural flow of your text.
+				</p>
+
+				<p>
+					When you're typing, hitting <kbd>CTRL + .</kbd> rotates the
+					paragraph into its alternate version. At first, both
+					versions are exactly the same. As you edit one version, the
+					other stays unchanged, and you can flip between them anytime
+					using the same shortcut. The key thing is that you're always
+					reading one coherent flow of text - you just rotate
+					paragraphs in place to see their different versions.
+				</p>
+
+				<p>
+					I built this as a simple HTML/CSS/JavaScript application
+					using the classic <kbd>contenteditable = true</kbd> as the
+					editor. No frameworks, no complex dependencies - just
+					exploring what's possible with the basic building blocks of
+					the web.
+				</p>
+
+				<p>
+					There are still lots of questions to explore here: How do
+					you visualize the relationship between alternates? What
+					happens when you want to mix parts from different versions?
+					How do you keep track of which alternatives you've tried as
+					they accumulate?
+				</p>
+
+				<p>
+					If you're interested in thinking about these questions, I'd
+					love to hear your thoughts. I'm keeping this page as an
+					evergreen note + prototype as I update it with further
+					ideas.
+				</p>
+				<p>The source code for this page is available on <a href="https://github.com/keturiosakys/experiments">GitHub</a>.</p>
+
+				<div class="upcoming-changes">
+					<p>In no particular order upcoming changes are:</p>
+					<ul>
+						<li>
+							<strong
+								>Better feedback about which version you are
+								on</strong
+							>. Currently the alternate version gets a blue hue
+							and a • dot indicator in the right margin to show
+							that this paragraph has an alternate version. This
+							isn't quite so evident so I should explore better
+							patterns here, e.g. toggling the background hue of
+							the entire paragraph when it's on an alternate
+							version, actually animating the rotation etc.
+						</li>
+						<li>
+							<strong>More interface-driven version toggle</strong
+							>. Currently you can only toggle using the
+							<span class="key-command">CTRL+.</span> shortcut
+							which although very nice for the user flow is not
+							very discoverable. A better idea would be to show
+							some kind of hover/tooltip/anything in the UI itself
+							that a different version can be created or toggled.
+						</li>
+						<li>
+							<strong>More granular version control</strong>.
+							Right now you can only rotate entire paragraphs, but
+							I might need to narrow down the interaction to allow
+							you to rotate words, selected phrases etc. I'm
+							hesitant to do this because engineering-wise this
+							blows up the complexity quite a bit but I might get
+							to it later.
+						</li>
+						<li>
+							<strong>A Code/Prosemirror plugin</strong>. If this
+							ends up being actually useful, I might explore
+							productionizing the prototype into a Codemirror or
+							Prosemirror plugin so it could actually be
+							integrated into more interfaces.
+						</li>
+					</ul>
+				</div>
+
+				<div>
+					<p>
+						<a href="https://laulau.land"
+							>&lt; Back to laulau.land</a
+						>
+					</p>
+				</div>
+			</section>
+
+			<section id="editor">
+				<div
+					id="editor-content"
+					contenteditable="true"
+					role="textbox"
+					aria-multiline="true"
+					placeholder="Write here... hit CTRL + . to rotate the version of your paragraph"
+					style="display: block"
+				></div>
+			</section>
+		</main>
+		<script
+			type="module"
+			src="main.js"
+		></script>
+	</body>
+</html>
